@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BethanysPieShop.Models;
 using BethanysPieShop.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BethanysPieShop.Controllers
@@ -31,6 +32,7 @@ namespace BethanysPieShop.Controllers
             return View(homeViewModel);
         }
 
+        [Authorize]
         public IActionResult Details(int id)
         {
             var pie = pieRepository.GetPieById(id);
