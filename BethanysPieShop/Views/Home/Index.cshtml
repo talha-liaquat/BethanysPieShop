@@ -1,18 +1,23 @@
-﻿@model IEnumerable<BethanysPieShop.Models.Pie>
+﻿@model BethanysPieShop.ViewModels.HomeViewModel
 
-<!DOCTYPE html>
 
-<html>
+<h2>@Model.Title</h2>
 
-<body>
-    <h2>@ViewBag.Title</h2>
 
-    @foreach(var pie in Model)
-    {
-        <div>
-            <h2>@pie.Name</h2>
-            <h3>@pie.Price.ToString("c")</h3>
+@foreach (var pie in Model.Pies)
+{
+    <div class="col-sm-4 col-lg-4 col-md-4">
+        <div class="thumbnail">
+            <img src="@pie.ImageThumbnailUrl" alt="">
+            <div class="caption">
+                <h3 class="pull-right">@pie.Price.ToString("c")</h3>
+                <h3>
+                    @pie.Name
+                </h3>
+                <p>@pie.ShortDescription</p>
+            </div>
         </div>
-    }
-</body>
-</html>
+    </div>
+}
+
+
