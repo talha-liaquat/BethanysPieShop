@@ -29,8 +29,7 @@ namespace BethanysPieShop
             //AddScoped: Same intance for same request, different requested will have different instances
             services.AddDbContext<AppDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<IPieRepository, PieRepository>();
-
-
+            services.AddTransient<IFeedbackRepository, FeedbackRepository>();
 
 
             //Register framework service
@@ -44,6 +43,7 @@ namespace BethanysPieShop
             app.UseDeveloperExceptionPage();//Display exception page
             app.UseStatusCodePages(); //Display 404 etc
             app.UseStaticFiles(); //route for static file in wwwroot
+            //app.UseAuthentication();
             //app.UseMvcWithDefaultRoute(); //use MVC default route
 
             app.UseMvc(routes =>
