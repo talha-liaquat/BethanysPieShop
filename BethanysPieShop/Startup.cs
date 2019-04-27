@@ -44,7 +44,16 @@ namespace BethanysPieShop
             app.UseDeveloperExceptionPage();//Display exception page
             app.UseStatusCodePages(); //Display 404 etc
             app.UseStaticFiles(); //route for static file in wwwroot
-            app.UseMvcWithDefaultRoute(); //use MVC default route
+            //app.UseMvcWithDefaultRoute(); //use MVC default route
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}"
+                    );
+            }
+            );
         }
     }
 }
